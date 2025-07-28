@@ -9,6 +9,8 @@ class UserSerializers(serializers.ModelSerializer):
         model =User
         fields=['id','username','email','role','mobile_no','password']
     
+
+    
     def create(self,validated_data):
         validated_data['password']=make_password(validated_data['password'])
         return super().create(validated_data)
