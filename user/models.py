@@ -4,7 +4,7 @@ from django.contrib.auth.models import AbstractUser
 USER_ROLES =(
     ('admin' ,'admin'),
     ('teacher','Teacher'),
-    ('student',('Student'))
+    ('student','Student')
 )
 
 class User(AbstractUser):
