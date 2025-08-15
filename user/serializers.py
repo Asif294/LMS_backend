@@ -8,9 +8,11 @@ class UserSerializers(serializers.ModelSerializer):
     class Meta:
         model =User
         fields=['id','username','email','role','mobile_no','password']
-    
 
-    
     def create(self,validated_data):
         validated_data['password']=make_password(validated_data['password'])
         return super().create(validated_data)
+    def update(self, instance, validated_data):
+        if 'password' in validated_data and validated_data['password']:
+            validated_data['password']=make_password(validated_data['password'])
+        return super().update(instance, validated_data)

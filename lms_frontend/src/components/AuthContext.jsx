@@ -18,4 +18,12 @@ export function AuthProvider({children}){
         localStorage.removeItem("token")
         setPage("login")
     }
+    const register=async(username,email,password,role)=>{
+        await axios.post("http://127.0.0.1:8000/api/user/auth/",{username,email,password,role})
+        setPage("login")
+    }
+    const goTo =(pageName)=>setPage(pageName);
+    return(
+        <AuthContext.Provider value={{token,login,logout,register,page,goTo}}>{children}</AuthContext.Provider>
+    )
 }
